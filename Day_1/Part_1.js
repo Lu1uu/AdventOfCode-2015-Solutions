@@ -2,9 +2,9 @@
 
 const fs = require('fs')
 
-let input = fs.readFileSync('./input.txt', 'UTF-8')
-arrOfParenthesis = input.split('')
-let newFloorLevel = arrOfParenthesis.reduce((floorLevel, char) => {
+const input = fs.readFileSync('./input.txt', 'UTF-8')
+const arrOfParenthesis = input.split('')
+const newFloorLevel = arrOfParenthesis.reduce((floorLevel, char) => {
     return char === ')' ? --floorLevel : ++floorLevel
 }, 0)
 
