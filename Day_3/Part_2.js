@@ -16,8 +16,8 @@ let santaX = 0,
     santaY = 0,
     roboSantaX = 0,
     roboSantaY = 0
-
 pointsVisited.add(`x:${0},y:${0}`)
+
 roboSanta.forEach((direction) => {
     switch (direction) {
         case '<':
