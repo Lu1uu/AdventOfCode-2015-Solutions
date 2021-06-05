@@ -7,7 +7,6 @@ for (const line of INPUT) {
     totalCharCount += line.length
     totalNewCharCount += getNewCharCount(line)
 }
-
 console.log(totalNewCharCount - totalCharCount)
 
 function getNewCharCount(_str) {
