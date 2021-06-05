@@ -1,4 +1,4 @@
-const PASSWORD = 'cqjxjnds'
+const PASSWORD = 'cqjxxyzz'
 let alphabet = 'abcdefghijklmnopqrstuvwxyz'.split('')
 
 const iterateLetter = (letter) => alphabet[(alphabet.indexOf(letter) + 1) % 26]
@@ -12,13 +12,14 @@ const newPassword = (password) => {
     } else {
         while (isLastLetter(passwordArr[index])) {
             passwordArr[index] = iterateLetter(passwordArr[index--])
-            passwordArr[index] = iterateLetter(passwordArr[index])
         }
+        passwordArr[index] = iterateLetter(passwordArr[index])
     }
     return passwordArr.join('')
 }
 
 const fetchNewPassword = (password) => {
+    password = newPassword(password)
     while (!isValid(password)) {
         password = newPassword(password)
     }
@@ -39,15 +40,10 @@ const hasStraight = (password) => {
     return false
 }
 
-const hasNoForbbidens = (password) => {
-    const forbiddenLetters = ['i', 'o', 'l']
-    for (const letter of password) {
-        if (forbiddenLetters.includes(letter)) return false
-    }
-    return true
-}
+const hasNoForbbidens = (password) => !/i|o|u/.test(password)
 
 const hasUniquePair = (password) => /([a-z])\1.*([a-z])\2/.test(password)
+
 const isValid = (password) =>
     hasStraight(password) &&
     hasNoForbbidens(password) &&
