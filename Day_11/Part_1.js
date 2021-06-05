@@ -2,9 +2,10 @@ const PASSWORD = 'cqjxxyzz'
 let alphabet = 'abcdefghijklmnopqrstuvwxyz'.split('')
 
 const iterateLetter = (letter) => alphabet[(alphabet.indexOf(letter) + 1) % 26]
+
 const isLastLetter = (letter) => (letter == 'z' ? true : false)
 
-const newPassword = (password) => {
+const fetchNewPassword = (password) => {
     let passwordArr = [...password]
     let index = passwordArr.length - 1
     if (!isLastLetter(passwordArr[index])) {
@@ -18,10 +19,10 @@ const newPassword = (password) => {
     return passwordArr.join('')
 }
 
-const fetchNewPassword = (password) => {
-    password = newPassword(password)
+const fetchNewValidPassword = (password) => {
+    password = fetchNewPassword(password)
     while (!isValid(password)) {
-        password = newPassword(password)
+        password = fetchNewPassword(password)
     }
     return password
 }
@@ -49,4 +50,4 @@ const isValid = (password) =>
     hasNoForbbidens(password) &&
     hasUniquePair(password)
 
-console.log(fetchNewPassword(PASSWORD))
+console.log(fetchNewValidPassword(PASSWORD))
