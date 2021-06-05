@@ -1,4 +1,4 @@
-let PASSWORD = 'abcdefgh'
+const PASSWORD = 'cqjxjnds'
 let alphabet = 'abcdefghijklmnopqrstuvwxyz'.split('')
 
 const iterateLetter = (letter) => alphabet[(alphabet.indexOf(letter) + 1) % 26]
@@ -12,7 +12,7 @@ const newPassword = (password) => {
     } else {
         while (isLastLetter(passwordArr[index])) {
             passwordArr[index] = iterateLetter(passwordArr[index--])
-            passwordArr[index - 1] = iterateLetter(passwordArr[index - 1])
+            passwordArr[index] = iterateLetter(passwordArr[index])
         }
     }
     return passwordArr.join('')
@@ -20,7 +20,6 @@ const newPassword = (password) => {
 
 const fetchNewPassword = (password) => {
     while (!isValid(password)) {
-        console.log(password)
         password = newPassword(password)
     }
     return password
